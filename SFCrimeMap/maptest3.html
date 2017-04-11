@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title></title>
+  <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<div id='map_geo' class='map'> </div>
+<script>
+var geojson = [{"geometry": {"type": "Point", "coordinates": [-122.42685322021, 37.7448938223089]}, "type": "Feature"}, {"geometry": {"type": "Point", "coordinates": [-122.410932750782, 37.769411384942]}, "type": "Feature"}, {"geometry": {"type": "Point", "coordinates": [-122.412692441179, 37.7501577446795]}, "type": "Feature"}, {"geometry": {"type": "Point", "coordinates": [-122.393357241451, 37.7757876218293]}, "type": "Feature"}];
+
+// call map api using javascript code and load my python code into usable variable (geojson)
+
+L.mapbox.accessToken = 'pk.eyJ1IjoiYmFuZXJqZWVkIiwiYSI6ImNpc3doNzRpYzA1NmQyemtocTh5ZzkxMzYifQ.-w2jfFGPwju-dMjY-3NjMw';
+var mapGeo = L.mapbox.map('map_geo', 'mapbox.light').setView([37.76, -122.4], 12);
+var myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(mapGeo);
+//mapGeo.scrollWheelZoom.disable();
+
+</script>
+</body>
+</html>

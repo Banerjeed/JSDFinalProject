@@ -20,7 +20,7 @@
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
           center: new google.maps.LatLng(37.7749295,-122.4194155),
-          mapTypeId: 'roadmap'
+          mapTypeId: 'terrain'
         });
 
         // Create a <script> tag and set the the source.
@@ -33,7 +33,7 @@
     // set of coordinates.
         window.geoJSON = function(humanWasteFeatures) {
         for (var i = 0; i < humanWasteFeatures.features.length; i++) {
-          var coords = parseFloat(humanWasteFeatures.features[i].geometry.coordinates);
+          var coords = humanWasteFeatures.features[i].geometry.coordinates;
           var latLng = new google.maps.LatLng(coords[1],coords[0]);
           var marker = new google.maps.Marker({
             position: latLng,
@@ -48,6 +48,5 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="app.js" type="text/javascript" charset="utf-8"></script>
-    <script google.maps.event.addDomListener(window, 'load', initialize);></script>
   </body>
 </html>
